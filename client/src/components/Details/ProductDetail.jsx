@@ -23,7 +23,7 @@ const ColumnText = styled(TableRow)`
     }
 `
 const ProductDetail = ({ product }) => {
-    const inputString = product?.productDescriptors?.description?.value;
+    const inputString = product?.description;
     const strippedString = inputString.replace(/<[^>]*>/g, '');
     const date = new Date(new Date().getTime() + 3 * 14 * 60 * 60 * 1000)
     return (
