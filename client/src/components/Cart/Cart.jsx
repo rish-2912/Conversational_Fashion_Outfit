@@ -63,32 +63,14 @@ const Cart = () => {
     const { cartItems } = useSelector(state => state.cart)
     const { account,setAccount } = useContext(DataContext)
     const [cart, setCart] = useState(false)
-    useEffect(()=>{
-        const req=async()=>{
-            try{
-                const res=await axios.get('http://localhost:8000',{
-                    withCredentials:true
-                })
-                // console.log(res);
-                if(res.data.status==='success'){
-                    // console.log(res.data.User.firstName);
-                    setAccount(res.data.User.firstName);
-                }
-            }
-            catch(err){
-                console.log(err);
-            }
-        }
-        req()
-    },[])
     let actualPrice = 0;
     let dis = 0;
     let total = 0;
     if (cartItems.length !== 0) {
         for (let item of cartItems) {
-            actualPrice += (item.data.price.mrp * item.data.quantity)
-            dis += ((item.data.price.mrp * item.data.quantity) - (item.data.price.cost * item.data.quantity))
-            total += (item.data.price.cost * item.data.quantity)
+            actualPrice += ((item.data.data.price+500) * item.data.data.quantity)
+            dis += actualPrice-(500*item.data.data.quantity)
+            total += (item.data.data.price * item.data.data.quantity)
         }
     }
     const buyItems = async (total) => {

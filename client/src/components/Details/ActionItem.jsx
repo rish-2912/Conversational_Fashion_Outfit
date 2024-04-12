@@ -98,7 +98,7 @@ const ActionItem = ({ product }) => {
             </Notification> : <></>}
             <Left>
                 <Box style={{ padding: '15px 20px', border: '1px solid #f0f0f0', height:"500px", textAlign: 'center' }}>
-                    <Image src={product?.image_url}></Image>
+                    <Image src={product?.img}></Image>
                 </Box>
                 {ok ? <StyledButton variant='contained' style={{ marginRight: 10, background: '#ff9f00', marginLeft: 10 }} onClick={() => addItemToCart()}><Cart />Add to Cart</StyledButton> :
                     <StyledButton variant='contained' style={{ marginRight: 10, background: '#ff9f00', marginLeft: 10 }} onClick={() => goToCart()}><Cart />Go to Cart</StyledButton>

@@ -15,24 +15,6 @@ const Filters = () => {
     const { account,setAccount } = useContext(DataContext)
     let {arr:products}=useContext(ProductContext);
     // console.log(products)
-    useEffect(()=>{
-        const req=async()=>{
-            try{
-                const res=await axios.get('http://localhost:8000',{
-                    withCredentials:true
-                })
-                // console.log(res);
-                if(res.data.status==='success'){
-                    // console.log(res.data.User.firstName);
-                    setAccount(res.data.User.firstName);
-                }
-            }
-            catch(err){
-                console.log(err);
-            }
-        }
-        req()
-    },[])
     const clickHandler = (e) => {
         setRate(prev => {
             if (prev.includes(e.target.value)) {

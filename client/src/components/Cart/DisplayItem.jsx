@@ -48,27 +48,28 @@ const DisplayItem = ({ products }) => {
     const decrement = (id, quantity) => {
         dispatch(addToCart(id, quantity - 1))
     }
+    console.log(products);
     return (
         <div>
             {
                 products.map(
                     product => (
                         <Container>
-                            <Image src={product.data.url} />
+                            <Image src={product.data.data.img} />
                             <Text>
-                                <Typography>{product.data.title.longTitle}</Typography>
+                                <Typography>{product.data.data.name}</Typography>
                                 <Box>
-                                    <Box component='span' style={{ fontSize: 15 }}>₹{product.data.price.cost * product.data.quantity}</Box>&nbsp;&nbsp;
-                                    <Box component='span' style={{ fontSize: 12, color: '#878787' }}><strike>₹{product.data.price?.mrp * product.data.quantity}</strike></Box>&nbsp;&nbsp;
-                                    <Box component='span' style={{ fontSize: 12, color: '#388E3C' }}>{product.data.price.discount} off</Box>
+                                    <Box component='span' style={{ fontSize: 15 }}>₹{product.data.data.price * product.data.data.quantity}</Box>&nbsp;&nbsp;
+                                    <Box component='span' style={{ fontSize: 12, color: '#878787' }}><strike>₹{(product.data.data.price+500) * product.data.data.quantity}</strike></Box>&nbsp;&nbsp;
+                                    <Box component='span' style={{ fontSize: 12, color: '#388E3C' }}>₹{500*product.data.data.quantity} off</Box>
                                 </Box>
                                 <Box style={{ display: 'flex', marginTop: '50px' }}>
                                     <Box>
-                                        {product?.data.quantity === 1 ? <ChangeButton variant='contained' disabled>-</ChangeButton> : <ChangeButton variant='contained' onClick={() => decrement(product?.data?.id, product.data.quantity)}>-</ChangeButton>}
-                                        <Input value={product?.data.quantity} readOnly></Input>
-                                        <ChangeButton variant='contained' onClick={() => increment(product?.data?.id, product?.data.quantity)}>+</ChangeButton>
+                                        {product?.data.data.quantity === 1 ? <ChangeButton variant='contained' disabled>-</ChangeButton> : <ChangeButton variant='contained' onClick={() => decrement(product?.data?.data.id, product.data.data.quantity)}>-</ChangeButton>}
+                                        <Input value={product?.data.data.quantity} readOnly></Input>
+                                        <ChangeButton variant='contained' onClick={() => increment(product?.data?.data.id, product?.data.data.quantity)}>+</ChangeButton>
                                     </Box>
-                                    <Button style={{ padding: '0', width: '60px', alignItems: 'left', color: 'black', marginLeft: '30px' }} onClick={() => removeItems(product.data.id)}>Remove</Button>
+                                    <Button style={{ padding: '0', width: '60px', alignItems: 'left', color: 'black', marginLeft: '30px' }} onClick={() => removeItems(product.data.data.id)}>Remove</Button>
                                 </Box>
                             </Text>
                         </Container>

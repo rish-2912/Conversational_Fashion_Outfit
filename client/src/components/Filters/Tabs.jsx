@@ -80,7 +80,7 @@ export default function BasicTabs({ filteredProducts }) {
                                     mar = '3%'
                                 }
                                 return (
-                                    <div style={{ display: 'flex', flexDirection: 'column', width: '20%', padding: '16px', marginLeft: `${mar}` }} className='effect' onClick={() => clickHandler(product.id)}>
+                                    <div style={{ display: 'flex', flexDirection: 'column', width: '20%', padding: '16px', marginLeft: `${mar}` }} className='effect' onClick={() => clickHandler(product?.id)}>
                                         <div style={{ textAlign: 'center' }}><img src={product?.img} style={{ height: '280px', width: 'auto' }}></img></div>
                                         <div>
                                             <p style={{ margin: '0', padding: '0', fontSize: '14px', paddingBottom: '5px' }}>{product?.name}</p>
