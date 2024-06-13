@@ -51,10 +51,10 @@ export default function BasicTabs({ filteredProducts }) {
         nav(`/product/${id}`)
     }
     if (value === 0) {
-        products.sort(function (a, b) { return (a.price.cost - b.price.cost) })
+        products.sort(function (a, b) { return (a.price - b.price) })
     }
     else {
-        products.sort(function (a, b) { return (b.price.cost - a.price.cost) })
+        products.sort(function (a, b) { return (b.price - a.price) })
     }
     console.log(products)
     return (
@@ -117,19 +117,19 @@ export default function BasicTabs({ filteredProducts }) {
                                     mar = '3%'
                                 }
                                 return (
-                                    <div style={{ display: 'flex', flexDirection: 'column', width: '20%', padding: '16px', marginLeft: `${mar}` }} className='effect' onClick={() => clickHandler(product.id)}>
-                                        <div style={{ textAlign: 'center' }}><img src={product?.image_url} style={{ height: '280px', width: 'auto' }}></img></div>
+                                    <div style={{ display: 'flex', flexDirection: 'column', width: '20%', padding: '16px', marginLeft: `${mar}` }} className='effect' onClick={() => clickHandler(product?.id)}>
+                                        <div style={{ textAlign: 'center' }}><img src={product?.img} style={{ height: '280px', width: 'auto' }}></img></div>
                                         <div>
-                                            <p style={{ margin: '0', padding: '0', fontSize: '14px', paddingBottom: '5px' }}>{product?.productDisplayName}</p>
-                                            <p style={{ margin: '0', padding: '0', fontSize: '12px', paddingBottom: '5px', color: '#878787', wordWrap: 'break-word' }}>{product?.displayCategories}</p>
+                                            <p style={{ margin: '0', padding: '0', fontSize: '14px', paddingBottom: '5px' }}>{product?.name}</p>
+                                            {/* <p style={{ margin: '0', padding: '0', fontSize: '12px', paddingBottom: '5px', color: '#878787', wordWrap: 'break-word' }}>{product?.category}</p> */}
                                             <div style={{ display: 'flex', paddingBottom: '5px' }}>
-                                                <p style={{ margin: '0', padding: '2px 4px 2px 6px', fontSize: '12px', color: 'white', background: "#388e3c" }}>{product?.myntraRating}★</p>
-                                                <p style={{ margin: '0', padding: '0', paddingLeft: '8px', fontSize: '14px', color: '#878787' }}>(400)</p>
+                                                <p style={{ margin: '0', padding: '2px 4px 2px 6px', fontSize: '12px', color: 'white', background: "#388e3c" }}>{Math.floor(product?.avg_rating)}★</p>
+                                                <p style={{ margin: '0', padding: '0', paddingLeft: '8px', fontSize: '14px', color: '#878787' }}>{Math.floor(product?.ratingCount)}</p>
                                             </div>
                                             <div style={{ paddingBottom: '5px' }}>
                                                 <div style={{ margin: ' 0', padding: '0', fontSize: '1rem', color: '#212121', display: 'inline-block' }}>₹{product?.price}</div>&nbsp;&nbsp;&nbsp;
-                                                <div style={{ margin: ' 0', padding: '0', fontSize: '14px', color: '#878787', display: 'inline-block' }}><strike>₹{product?.discountedPrice}</strike></div>&nbsp;&nbsp;&nbsp;
-                                                <div style={{ margin: ' 0', padding: '0', fontSize: '13px', color: '#388e3c', display: 'inline-block' }}>₹{product?.price-product?.discountedPrice} off</div>
+                                                <div style={{ margin: ' 0', padding: '0', fontSize: '14px', color: '#878787', display: 'inline-block' }}><strike>₹{product?.price+500}</strike></div>&nbsp;&nbsp;&nbsp;
+                                                <div style={{ margin: ' 0', padding: '0', fontSize: '13px', color: '#388e3c', display: 'inline-block' }}>₹{500} off</div>
                                             </div>
                                             <p style={{ margin: '0', padding: '0', fontSize: '12px' }}>Free delivery</p>
                                         </div>

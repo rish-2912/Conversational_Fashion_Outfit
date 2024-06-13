@@ -2,6 +2,7 @@ import React, { useState, useRef, useContext } from 'react'
 import { Dialog, TextField, Typography, Button, Alert, AlertTitle, styled } from '@mui/material'
 import { authenticateSignup, authenticateLogin } from '../../service/api'
 import DataProvider, { DataContext, LoginContext } from '../../context/DataProvider'
+import Cookies from 'js-cookie'
 const signUpInitial = {
     firstName: "",
     lastName: "",
